@@ -909,8 +909,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3582201846779986462, guid: b21d149734dec3147917fe83a5e7eef2, type: 3}
+      propertyPath: mesh
+      value: 
+      objectReference: {fileID: 140535636606969536, guid: e864aa006e037bf42a50da43a3a0a643, type: 3}
+    - target: {fileID: 3582201846779986462, guid: b21d149734dec3147917fe83a5e7eef2, type: 3}
       propertyPath: textFile
-      value: Assets/NameOfYourProject/Database/temp.txt
+      value: Assets/NameOfYourProject/Database/bee.txt
       objectReference: {fileID: 0}
+    - target: {fileID: 3582201846779986462, guid: b21d149734dec3147917fe83a5e7eef2, type: 3}
+      propertyPath: mesh_point
+      value: 
+      objectReference: {fileID: 140535636606969536, guid: e864aa006e037bf42a50da43a3a0a643, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b21d149734dec3147917fe83a5e7eef2, type: 3}
