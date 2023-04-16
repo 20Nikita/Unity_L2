@@ -454,6 +454,83 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73ac470d3d909d645a6c89a4664b6849, type: 3}
+--- !u!1001 &913297568
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1498605663233548198, guid: b21d149734dec3147917fe83a5e7eef2, type: 3}
+      propertyPath: m_Name
+      value: Cube (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1498605663233548202, guid: b21d149734dec3147917fe83a5e7eef2, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1498605663233548202, guid: b21d149734dec3147917fe83a5e7eef2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 12.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1498605663233548202, guid: b21d149734dec3147917fe83a5e7eef2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.009998322
+      objectReference: {fileID: 0}
+    - target: {fileID: 1498605663233548202, guid: b21d149734dec3147917fe83a5e7eef2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1498605663233548202, guid: b21d149734dec3147917fe83a5e7eef2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1498605663233548202, guid: b21d149734dec3147917fe83a5e7eef2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1498605663233548202, guid: b21d149734dec3147917fe83a5e7eef2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1498605663233548202, guid: b21d149734dec3147917fe83a5e7eef2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1498605663233548202, guid: b21d149734dec3147917fe83a5e7eef2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1498605663233548202, guid: b21d149734dec3147917fe83a5e7eef2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1498605663233548202, guid: b21d149734dec3147917fe83a5e7eef2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582201846779986462, guid: b21d149734dec3147917fe83a5e7eef2, type: 3}
+      propertyPath: mesh
+      value: 
+      objectReference: {fileID: 140535636606969536, guid: e864aa006e037bf42a50da43a3a0a643, type: 3}
+    - target: {fileID: 3582201846779986462, guid: b21d149734dec3147917fe83a5e7eef2, type: 3}
+      propertyPath: TextFile
+      value: 
+      objectReference: {fileID: 4900000, guid: 2f717067ebc283d44b02d9b348e65292, type: 3}
+    - target: {fileID: 3582201846779986462, guid: b21d149734dec3147917fe83a5e7eef2, type: 3}
+      propertyPath: textFile
+      value: Assets/MyWork/Database/bee.txt
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582201846779986462, guid: b21d149734dec3147917fe83a5e7eef2, type: 3}
+      propertyPath: mesh_point
+      value: 
+      objectReference: {fileID: 6585732841212607980, guid: ac740a4b98ec7444f97fae2e643a1502, type: 3}
+    - target: {fileID: 3582201846779986462, guid: b21d149734dec3147917fe83a5e7eef2, type: 3}
+      propertyPath: probability
+      value: 0.5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b21d149734dec3147917fe83a5e7eef2, type: 3}
 --- !u!1001 &1040506615
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -913,12 +990,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 140535636606969536, guid: e864aa006e037bf42a50da43a3a0a643, type: 3}
     - target: {fileID: 3582201846779986462, guid: b21d149734dec3147917fe83a5e7eef2, type: 3}
+      propertyPath: TextFile
+      value: 
+      objectReference: {fileID: 4900000, guid: 8a2055c0c45d3e741bb3fb8b5be935e6, type: 3}
+    - target: {fileID: 3582201846779986462, guid: b21d149734dec3147917fe83a5e7eef2, type: 3}
       propertyPath: textFile
-      value: Assets/NameOfYourProject/Database/bee.txt
+      value: Assets/MyWork/Database/bee.txt
       objectReference: {fileID: 0}
     - target: {fileID: 3582201846779986462, guid: b21d149734dec3147917fe83a5e7eef2, type: 3}
       propertyPath: mesh_point
       value: 
-      objectReference: {fileID: 140535636606969536, guid: e864aa006e037bf42a50da43a3a0a643, type: 3}
+      objectReference: {fileID: 6585732841212607980, guid: ac740a4b98ec7444f97fae2e643a1502, type: 3}
+    - target: {fileID: 3582201846779986462, guid: b21d149734dec3147917fe83a5e7eef2, type: 3}
+      propertyPath: probability
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b21d149734dec3147917fe83a5e7eef2, type: 3}
