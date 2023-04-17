@@ -4,6 +4,8 @@ using UnityEngine;
 using System;
 using System.IO;
 using System.Globalization;
+namespace Valve.VR.InteractionSystem
+{
 public class Batton : MonoBehaviour
 {
 
@@ -14,10 +16,16 @@ public class Batton : MonoBehaviour
     List<Point>Points=new List<Point>();
     public float MaxPoint = 10000;
 
-    public float probability = 0.1f;
-    public float Size = 1;
-    public float SizePoint = 1;
-    float SizePointAlf = 0.01f;
+
+    public LinearMapping ProbabilityLinear;
+    public LinearMapping SizeСloudLinear;
+    public LinearMapping SizePointLinear;
+
+    float probability = 0.1f;
+    float SizeСloud = 1f;
+    float SizePoint = 1f;
+
+    float SizePointAlf = 0.02f;
     float Probability;
     float max_x;
     float min_x;
@@ -81,12 +89,18 @@ public class Batton : MonoBehaviour
         }
         else
         {
+            LinearMapping t = ProbabilityLinear.GetComponent<LinearMapping>();
+            probability = t.value;
+            t = SizeСloudLinear.GetComponent<LinearMapping>();
+            SizeСloud = (t.value + 0.01f)*2;
+            t = SizePointLinear.GetComponent<LinearMapping>();
+            SizePoint = t.value;
             state = true;
             GetComponent<Renderer>().material.color = Color.green;
             float center_x = (max_x + min_x)/2;
             float center_y = (max_y + min_y)/2;
             float center_z = (max_z + min_z)/2;
-            float alf = Size / Math.Max(max_x - min_x, max_z - min_z);
+            float alf = SizeСloud / Math.Max(max_x - min_x, max_z - min_z);
             Probability = Math.Min(MaxPoint / Points.Count,1) * probability;
             mesh_point.transform.localScale = new Vector3(SizePointAlf*SizePoint,SizePointAlf*SizePoint,SizePointAlf*SizePoint);
             foreach (Point item in Points)
@@ -103,4 +117,5 @@ public class Batton : MonoBehaviour
             }
         }
     }
+}
 }
