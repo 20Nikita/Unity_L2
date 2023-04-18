@@ -514,6 +514,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 140535636606969536, guid: e864aa006e037bf42a50da43a3a0a643, type: 3}
     - target: {fileID: 3582201846779986462, guid: b21d149734dec3147917fe83a5e7eef2, type: 3}
+      propertyPath: MaxPoint
+      value: 30000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582201846779986462, guid: b21d149734dec3147917fe83a5e7eef2, type: 3}
       propertyPath: TextFile
       value: 
       objectReference: {fileID: 4900000, guid: 2f717067ebc283d44b02d9b348e65292, type: 3}
@@ -989,6 +993,10 @@ PrefabInstance:
       propertyPath: mesh
       value: 
       objectReference: {fileID: 140535636606969536, guid: e864aa006e037bf42a50da43a3a0a643, type: 3}
+    - target: {fileID: 3582201846779986462, guid: b21d149734dec3147917fe83a5e7eef2, type: 3}
+      propertyPath: MaxPoint
+      value: 30000
+      objectReference: {fileID: 0}
     - target: {fileID: 3582201846779986462, guid: b21d149734dec3147917fe83a5e7eef2, type: 3}
       propertyPath: TextFile
       value: 
