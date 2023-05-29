@@ -4,84 +4,55 @@ using UnityEngine;
 using System;
 using System.IO;
 using System.Globalization;
+
 namespace Valve.VR.InteractionSystem
 {
 public class Batton : MonoBehaviour
 {
 
-    bool state = false;
     public GameObject mesh_point;
     public TextAsset TextFile;
-    List<GameObject>Meshs=new List<GameObject>();
-    List<Point>Points=new List<Point>();
     public float MaxPoint = 10000;
-
 
     public LinearMapping ProbabilityLinear;
     public LinearMapping SizeСloudLinear;
     public LinearMapping SizePointLinear;
 
-    float probability = 0.1f;
-    float SizeСloud = 1f;
-    float SizePoint = 1f;
-
-    float SizePointAlf = 0.02f;
-    float Probability;
+    bool state = false;
+    // Точки
+    List<GameObject> Meshs=new List<GameObject>();
+    List<LoadPoints.Point> Points=new List<LoadPoints.Point>();
     float max_x;
     float min_x;
     float max_y;
     float min_y;
     float min_z;
     float max_z;
-    struct Point
-    {
-        public Vector3 Vertices;
-        public Color Colors;
-    
-        public Point(Vector3 vertices, Color colors)
-        {
-            this.Vertices = vertices;
-            this.Colors = colors;
-        }
-    }
+
+    // Задаваемые параметры
+    float Probability;
+    float SizeСloud;
+    float SizePoint;
+
+    // Коэффициенты скалирования параметров
+    float SizePointAlf = 0.02f;
+    float probability = 0.1f;
+
     private void Start()
     {
+        // Кнопка нажата состояние выкл
         state = false;
         GetComponent<Renderer>().material.color = Color.red;
-
-        string text = TextFile.ToString();
-        // Debug.Log(text);
-        string[] points = text.Split('\n');
-        string[] t = points[0].Split(' ');
-        max_x = float.Parse(t[0], CultureInfo.InvariantCulture.NumberFormat);
-        min_x = float.Parse(t[0], CultureInfo.InvariantCulture.NumberFormat);
-        max_y = float.Parse(t[1], CultureInfo.InvariantCulture.NumberFormat);
-        min_y = float.Parse(t[1], CultureInfo.InvariantCulture.NumberFormat);
-        max_z = float.Parse(t[2], CultureInfo.InvariantCulture.NumberFormat);
-        min_z = float.Parse(t[2], CultureInfo.InvariantCulture.NumberFormat);
-        foreach (var item in points)
-        {
-            string[] point = item.Split(' ');
-            float x = float.Parse(point[0], CultureInfo.InvariantCulture.NumberFormat);
-            float y = float.Parse(point[1], CultureInfo.InvariantCulture.NumberFormat);
-            float z = float.Parse(point[2], CultureInfo.InvariantCulture.NumberFormat);
-            if (x < min_x){ min_x = x; }
-            else if (x > max_x){ max_x = x; }
-            if (y < min_y){ min_y = y; }
-            else if (y > max_y){ max_y = y; }
-            if (z < min_z){ min_z = z; }
-            else if (z > max_z){ max_z = z; }
-            Vector3 loc = new Vector3(x, y, z);
-            Color col = new Color(float.Parse(point[3], CultureInfo.InvariantCulture.NumberFormat), float.Parse(point[4], CultureInfo.InvariantCulture.NumberFormat), float.Parse(point[5], CultureInfo.InvariantCulture.NumberFormat));
-            Points.Add(new Point(loc, col));
-        }
-
+        // Загрузка точек из файла
+        LoadPoints.Load(TextFile, ref Points, ref max_x, ref min_x, ref max_y, ref min_y, ref max_z, ref min_z);
     }
     public void up(){
         if (state) 
         {
+            // Кнопка нажата состояние выкл
             state = false;
             GetComponent<Renderer>().material.color = Color.red;
+            // Удалить точки
             foreach (GameObject item in Meshs)
             {
                 Destroy(item);
@@ -89,29 +60,37 @@ public class Batton : MonoBehaviour
         }
         else
         {
+            // Получение параметров точек заданных в сцене
             LinearMapping t = ProbabilityLinear.GetComponent<LinearMapping>();
             probability = t.value;
             t = SizeСloudLinear.GetComponent<LinearMapping>();
             SizeСloud = (t.value + 0.01f)*2;
             t = SizePointLinear.GetComponent<LinearMapping>();
             SizePoint = t.value;
+            // Кнопка нажата состояние вкл
             state = true;
             GetComponent<Renderer>().material.color = Color.green;
+            // Расчет параметров смещения и трансформации по данным со сцены
             float center_x = (max_x + min_x)/2;
             float center_y = (max_y + min_y)/2;
             float center_z = (max_z + min_z)/2;
             float alf = SizeСloud / Math.Max(max_x - min_x, max_z - min_z);
             Probability = Math.Min(MaxPoint / Points.Count,1) * probability;
             mesh_point.transform.localScale = new Vector3(SizePointAlf*SizePoint,SizePointAlf*SizePoint,SizePointAlf*SizePoint);
-            foreach (Point item in Points)
+            // Цикл по точкам
+            foreach (LoadPoints.Point item in Points)
             {
+                // Рисовать не все точки
                 if (UnityEngine.Random.Range(0.0f, 1.0f) < Probability){
+                    // Координаты
                     float x = (item.Vertices[0] - center_x)*alf + transform.position[0];
                     float y = (item.Vertices[1] - min_y)*alf + transform.position[1] + 0.5f;
                     float z = (item.Vertices[2] - center_z)*alf + transform.position[2];
-
+                    // Спавн
                     GameObject mesh = Instantiate(mesh_point, new Vector3(x, y, z), Quaternion.identity);
+                    // Цвет
                     mesh.GetComponent<Renderer>().material.color = item.Colors;
+                    // Сохранить (для удаления)
                     Meshs.Add(mesh);
                 }
             }
